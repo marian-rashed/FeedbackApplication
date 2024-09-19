@@ -7,6 +7,9 @@ namespace FeedbackApplication.Repository.Interface
         void Add(Opinion Entity);
 
         IEnumerable<Opinion> GetAll();
+        public void Delete(int id);
+
+        Opinion Get(int id);
 
         void Save();
     }

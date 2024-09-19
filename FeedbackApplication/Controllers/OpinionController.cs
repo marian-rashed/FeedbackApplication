@@ -36,5 +36,20 @@ namespace FeedbackApplication.Controllers
         { 
             return Ok(_opinionRepository.GetAll());
         }
+
+        [HttpDelete("DeleteOpinion")]
+        public IActionResult DeleteOpinion(int id) 
+        {
+            Opinion opinion = _opinionRepository.Get(id);
+
+            if(opinion == null) 
+            {
+                return NotFound();
+            }
+            opinion.IsDeleted=true;
+            _opinionRepository.Save();
+            return Ok();
+        }
+
     }
 }

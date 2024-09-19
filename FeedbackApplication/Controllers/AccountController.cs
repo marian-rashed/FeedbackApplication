@@ -123,7 +123,7 @@ namespace FeedbackApplication.Controllers
 
             if (resetPassResult.Succeeded)
             {
-                return Ok("Password reset successful.");
+                return Ok(new {message="password reset successful"});
             }
 
             foreach (var error in resetPassResult.Errors)

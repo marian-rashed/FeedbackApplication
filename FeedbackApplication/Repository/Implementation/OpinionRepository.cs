@@ -19,7 +19,18 @@ namespace FeedbackApplication.Repository.Implementation
 
         public IEnumerable<Opinion> GetAll()
         {
-            return _context.Opiniones.ToList();
+            return _context.Opiniones.Where(o => !o.IsDeleted).ToList();
+        }
+
+        public Opinion Get(int id)
+        {
+            return _context.Opiniones.FirstOrDefault(o => o.Id == id && !o.IsDeleted);
+        }
+
+
+        public void Delete(int id) 
+        {
+            _context.Update(id);
         }
 
         public void Save()
